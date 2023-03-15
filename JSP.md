@@ -64,3 +64,12 @@
   varStatus객체명.last     <!-- 마지막 반복문인가? true : false -->
 </c:forEach>
 ```
+
+### forTokens문
+
+```jsp
+<!-- 문자열을 구분자로 분리, 배열로 만들어 for loop -->
+<c:forTokens items="문자열" delims="문자열 구분자" var="변수명">
+  <!-- 실행문 -->
+</c:forTokens>
+```
