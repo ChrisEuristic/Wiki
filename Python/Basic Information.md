@@ -134,3 +134,15 @@ class 자식클래스(부모클래스1, 부모클래스2):
 인스턴스.부모클래스1에선언된메소드()
 인스턴스.부모클래스2에선언된메소드()
 ```
+
+### 추상 클래스
+* 추상 메소드를 가진 클래스
+* import abstractmethod 필수
+```python
+from abc모듈 import ABC클래스, abstractmethod
+
+class 클래스명(ABC클래스):
+  @abstractmethod
+  def 추상메소드():
+    pass
+```
