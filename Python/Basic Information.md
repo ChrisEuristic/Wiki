@@ -79,3 +79,36 @@ class 클래스명:
   def 인스턴스메서드(self, arg):
     print("메소드 호출")
 ```
+
+### 인스턴스 생성
+```python
+  인스턴스변수 = 클래스명(args)
+```
+
+### 클래스 변수(Static Var)
+```python
+class 클래스명:
+  변수 = 0
+
+  def 함수():
+    클래스명.변수 = 값
+    
+클래스명.변수 = 값
+```
+
+### 클래스 메소드(Static Method)
+```python
+class 클래스명:
+  @classmethod
+  def 클래스메소드():
+    print("@classmethod 데코레이터로 클래스 메소드를 정의")
+
+클래스명.클래스메소드()
+```
+
+### Private 변수 정의 방법
+```python
+class 클래스명:
+  def __init__(self, 변수):
+    self.__변수 = 변수
+```
