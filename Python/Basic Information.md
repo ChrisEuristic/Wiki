@@ -61,3 +61,21 @@ print("나는 {0}이고 {1:.1f}입니다.".format("사람",10.532))
 ```python
 print(f"나는 {job}이고 {name}라고 합니다. 키는 {height:.1f}cm 입니다.")
 ```
+
+
+
+<br><br>
+
+# Class
+### 정의 방법
+```python
+class 클래스명:
+  클래스변수 = 값
+  
+  def __init__(self, arg):
+    self.클래스변수 = "생성자"
+    print("생성자 호출")
+    
+  def 인스턴스메서드(self, arg):
+    print("메소드 호출")
+```
