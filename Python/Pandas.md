@@ -24,3 +24,11 @@ list = [
 ]
 df = pd.DataFrame(list)
 ```
+
+#### 데이터 파일 읽어들이기
+```python
+pd.read_csv('./파일명.csv')
+
+pd.read_csv('./파일명.csv', index_col = 0)
+# 0번째 컬럼을 Row Index로 사용한다는 의미.
+```
