@@ -32,3 +32,66 @@ pd.read_csv('./파일명.csv')
 pd.read_csv('./파일명.csv', index_col = 0)
 # 0번째 컬럼을 Row Index로 사용한다는 의미.
 ```
+
+#### 특정 Row, Column 추출하기
+```python
+data = df.loc[row, column]
+# data는 특정 행, 열의 값을 갖는다.
+# row와 column 변수의 자리엔 List나 Series 같은 배열이 올 수 있다.
+# df.loc[row] 형태 또는 df.loc[row, :] 형태로 작성하면 row로 지정한 행 전체를 반환한다.
+# df.loc[:, column] 형태로 column으로 지정한 열 전체를 가져올 수 있다. column은 2nd Arg이므로 1st 자리를 생략할 수 없다.
+# 그러나 df['column']의 형태로 지정한 열 전체를 가져올 수 있다.
+# 개별 행이나 열은 모두 Series 타입으로 반환된다.
+```
+
+#### Pandas의 연산 개념
+- numpy와 pandas 모두 산술연산자에 반복문으로 대응한다.<br>
+- Series = Series + 1의 실제 의미는 아래 for문과 같다.
+```python
+Series_Temp = Series
+for i in range(Series_Temp.size()):
+    Series_Temp[i] += 1
+Series = Series_Temp
+```
+- 이는 비교연산 결과 역시 동일하다.
+- Series > 0은 boolean Series가 반환된다.
+
+#### iloc의 사용
+- loc와 동일하게 작용하나 Args 값으로 index 값을 할당하여야 한다.
+```python
+df.iloc[1, 2]
+# 1번 행, 2번 열의 값을 가져온다.
+
+df.iloc[[0, 3], [4, 6]]
+# 4번과 6번 열까지만 표시된 0번과 3번 행을 가져온다.
+# return type은 DataFrame이 된다.
+
+df.iloc[8: , 0:3]
+# 0번부터 3번 열까지만 표시된, 8번부터 마지막 행까지를 가져온다.
+```
+
+### 데이터프레임의 값 수정
+```python
+df.loc[row,column] = new Value
+# 특정 위치의 값을 수정
+
+df.loc[row] = [new Value, new Value, new Value, ... ]
+# 특정 행의 값 전체를 수정
+
+df[column] = [new Value, new Value, new Value, ... ]
+# 특정 열의 값 전체를 수정
+```
+
+### 데이터프레임의 값 추가
+* 값 수정과 방법은 동일하나 row, column 자리에 newRow, newColumn이 들어가면 된다.
+
+### 데이터프레임의 값 삭제
+```python
+df.drop(row, axis='index', inplace=True)
+# row에 대입한 행이 삭제된다.
+# inplace는 현재 객체에 반영할지, 새로운 객체를 만들어 반영할지를 결정한다. True시 현재 객체.
+
+df.drop(column, axis='columns', inplace=False)
+# column에 대입한 열이 삭제된다.
+# inplace가 False이므로 원본 객체는 손상되지 않고 column 열이 삭제된 새로운 데이터프레임이 반환된다.
+```
