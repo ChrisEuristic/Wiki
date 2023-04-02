@@ -1,4 +1,4 @@
-#### 2차원 리스트, 2차원 numpy Array, pandas Series로 데이터프레임을 만들 수 있다.
+### 2차원 리스트, 2차원 numpy Array, pandas Series로 데이터프레임을 만들 수 있다.
 ```python
 list = [['dongwook', 50, 86], ['sineui', 89, 31], ['ikjoong', 68, 91], ['yoonsoo', 88, 75]]
 array = np.array(list)
@@ -15,7 +15,7 @@ df2 = pd.DataFrame(array)
 df3 = pd.DataFrame(series)
 ```
 
-#### 딕셔너리의 리스트로 데이터프레임 만들기
+### 딕셔너리의 리스트로 데이터프레임 만들기
 ```python
 list = [
   {'name': 'A', 'age': 5, 'score': 50},
@@ -25,7 +25,7 @@ list = [
 df = pd.DataFrame(list)
 ```
 
-#### 데이터 파일 읽어들이기
+### 데이터 파일 읽어들이기
 ```python
 pd.read_csv('./파일명.csv')
 
@@ -33,7 +33,7 @@ pd.read_csv('./파일명.csv', index_col = 0)
 # 0번째 컬럼을 Row Index로 사용한다는 의미.
 ```
 
-#### 특정 Row, Column 추출하기
+### 특정 Row, Column 추출하기
 ```python
 data = df.loc[row, column]
 # data는 특정 행, 열의 값을 갖는다.
@@ -44,7 +44,7 @@ data = df.loc[row, column]
 # 개별 행이나 열은 모두 Series 타입으로 반환된다.
 ```
 
-#### Pandas의 연산 개념
+### Pandas의 연산 개념
 - numpy와 pandas 모두 산술연산자에 반복문으로 대응한다.<br>
 - Series = Series + 1의 실제 의미는 아래 for문과 같다.
 ```python
@@ -56,7 +56,7 @@ Series = Series_Temp
 - 이는 비교연산 결과 역시 동일하다.
 - Series > 0은 boolean Series가 반환된다.
 
-#### iloc의 사용
+### iloc의 사용
 - loc와 동일하게 작용하나 Args 값으로 index 값을 할당하여야 한다.
 ```python
 df.iloc[1, 2]
@@ -89,9 +89,33 @@ df[column] = [new Value, new Value, new Value, ... ]
 ```python
 df.drop(row, axis='index', inplace=True)
 # row에 대입한 행이 삭제된다.
+# row 값에 List를 넣어 여러 행을 삭제할 수 있다.
 # inplace는 현재 객체에 반영할지, 새로운 객체를 만들어 반영할지를 결정한다. True시 현재 객체.
 
 df.drop(column, axis='columns', inplace=False)
 # column에 대입한 열이 삭제된다.
+# column 값에 List를 넣어 여러 열을 삭제할 수 있다.
 # inplace가 False이므로 원본 객체는 손상되지 않고 column 열이 삭제된 새로운 데이터프레임이 반환된다.
+```
+
+### 데이터프레임의 컬럼 Rename
+```python
+df.rename(columns={'oldName1': 'newName1', 'oldName2': 'newName2'}, inplace=True)
+# inplace는 현재 객체에 반영할지, 새로운 객체를 만들어 반영할지를 결정한다. True시 현재 객체.
+```
+
+### 데이터프레임의 index column에 이름 붙이기
+```python
+df.index.name = 'newName'
+```
+
+### 데이터프레임의 특정 column을 index column으로 만들기(덮어쓰기)
+```python
+df['newColumn'] = df.index
+# newColumn이라는 열을 생성하고 index column의 내용으로 초기화시킨다.
+
+df.set_index('column', inplace=True)
+# column이라는 열을 index column으로 만든다.
+# 이 명령은 기존 index column이 있는 경우 old index column을 덮어써서 삭제시키기 때문에 반드시 old column을 다른 data column으로 만들어주고 실행해야 한다.
+# inplace가 True이므로 원본 객체가 변경된다.
 ```
