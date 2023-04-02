@@ -119,3 +119,75 @@ df.set_index('column', inplace=True)
 # 이 명령은 기존 index column이 있는 경우 old index column을 덮어써서 삭제시키기 때문에 반드시 old column을 다른 data column으로 만들어주고 실행해야 한다.
 # inplace가 True이므로 원본 객체가 변경된다.
 ```
+
+### 데이터프레임의 상단, 하단만 출력하기
+```python
+df.head(int rows)
+# 0번부터 rows -1 행까지 출력된다.
+
+df.tail(int rows)
+# 마지막번부터 rows 개수만큼 행이 출력된다. (순서가 바뀌진 않는다.)
+```
+
+### 데이터프레임의 사이즈
+```python
+df.shape
+# 변수임.
+# (x, y) 형태의 값. 3차원 이상인 경우 (x, y, z, ...) 형태로 나타나게 됨.
+```
+
+### 데이터프레임의 컬럼 이름
+```python
+df.columns
+# 변수임.
+```
+
+### 데이터프레임의 컬럼별 기본정보 확인
+```python
+df.info()
+# 컬럼명, 값 개수, null여부, 데이터타입,
+```
+
+### 데이터프레임의 컬럼별 통계 확인
+```python
+df.describe()
+# 컬럼별로 값 개수, 평균, 표준편차, 최소값, 25%, 중위값, 75%, 최대값
+```
+
+### 데이터프레임을 정렬하기
+```python
+df.sort_values()
+
+'''키워드 변수'''
+by = 'column'
+# 정렬할 기준 column 지정
+
+ascending = boolean
+# True: 오름차순, False: 내림차순
+
+inplace = boolean
+# True: 현재 데이터프레임 수정, False: 새로운 데이터프레임 생성
+```
+
+### Series에서 중복을 제거하여 반환받기
+```python
+df['column'].unique()
+# array([value1, value2, ...])
+```
+
+### Series에서 데이터 확인
+```python
+df['column'].describe()
+# count: 값 개수
+# unique: 값 이름들
+# top: 가장 많이 나온 값
+# freq: top의 개수
+```
+
+### Series에서 값의 종류와 개수 반환받기
+```python
+df['column'].value_counts()
+# value1 value_count1
+# value2 value_count2
+# ... ...
+```
