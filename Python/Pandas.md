@@ -191,3 +191,24 @@ df['column'].value_counts()
 # value2 value_count2
 # ... ...
 ```
+
+### 그래프 그리기
+```python
+plt.plot(df)    # 선 그래프
+plt.scatter()   # 산점도
+plt.bar()       # 막대 그래프
+plt.pie()       # 파이 그래프
+plt.hist()      # 히스토그램
+plt.title()     # 그래프의 제목 설정
+plt.xlabel()    # x축 레이블 설정
+plt.ylabel()    # y축 레이블 설정
+plt.show()      # 그래프를 보여줌
+
+아래는 흠.... 일반적인 문법은 아님
+
+# 키워드 파라미터
+# kind = 'line' 또는 'bar' 또는 'pie'
+# kind = 'barh' (가로형 막대 그래프)
+# y = 'column' 또는 y = ['column1', 'column2', ... ]
+# stacked = boolean(T: 하나로 합쳐진 막대 그래프)
+```
