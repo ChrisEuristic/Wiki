@@ -55,3 +55,7 @@ export default {
 /* ... 생략 ... */
 }
 ```
+6. 테스트 코드 작성 후 실행
+```bash
+$ npm test
+```
